@@ -35,17 +35,36 @@ export const Login = () => {
   return (
     <div style={styles.container}>
       <form onSubmit={handleSubmit} style={styles.card}>
-        <h2>Iniciar Sesión</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#1f2937' }}>Iniciar Sesión</h2>
         {error && <p style={styles.error}>{error}</p>}
+        
         <div style={styles.group}>
-          <label>Usuario</label>
-          <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
+          <label style={styles.label}>Usuario</label>
+          <input 
+            type="text" 
+            required 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            style={styles.input}
+            placeholder="Usuario"
+          />
         </div>
+
         <div style={styles.group}>
-          <label>Contraseña</label>
-          <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label style={styles.label}>Contraseña</label>
+          <input 
+            type="password" 
+            required 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            style={styles.input}
+            placeholder="••••••••"
+          />
         </div>
-        <button type="submit" disabled={loading}>{loading ? 'Cargando...' : 'Entrar'}</button>
+
+        <button type="submit" disabled={loading} style={styles.button}>
+          {loading ? 'Cargando...' : 'Entrar'}
+        </button>
       </form>
     </div>
   );
@@ -53,7 +72,10 @@ export const Login = () => {
 
 const styles = {
   container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f3f4f6' },
-  card: { backgroundColor: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', width: '300px' },
+  card: { backgroundColor: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', width: '320px' },
   group: { marginBottom: '1rem', display: 'flex', flexDirection: 'column' },
-  error: { color: 'red', fontSize: '0.85rem' }
+  label: { fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '0.25rem' },
+  input: { padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '4px', outline: 'none', fontSize: '0.95rem' },
+  button: { padding: '10px', backgroundColor: '#4f46e5', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', width: '100%', marginTop: '0.5rem' },
+  error: { color: 'red', fontSize: '0.85rem', marginBottom: '1rem', textAlign: 'center' }
 };
