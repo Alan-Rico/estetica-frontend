@@ -7,6 +7,7 @@ function Dashboard() { return <h2>Bienvenido al Panel Principal</h2>; }
 function Inventario() { return <h2>Gestión de Inventario</h2>; }
 function Clientes() { return <h2>Gestión de Clientes</h2>; }
 
+
 // Componente Layout con menú de navegación
 function Layout() {
   const handleLogout = () => {
@@ -53,6 +54,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventario" element={<Inventario />} />
             <Route path="/clientes" element={<Clientes />} />
+            <Route path="/citas" element={<Citas />} />
           </Route>
         </Route>
       </Routes>

@@ -75,7 +75,28 @@ const styles = {
   card: { backgroundColor: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', width: '320px' },
   group: { marginBottom: '1rem', display: 'flex', flexDirection: 'column' },
   label: { fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '0.25rem' },
-  input: { padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '4px', outline: 'none', fontSize: '0.95rem' },
-  button: { padding: '10px', backgroundColor: '#4f46e5', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', width: '100%', marginTop: '0.5rem' },
+  
+  input: { 
+    padding: '8px 12px', 
+    border: '1px solid #d1d5db', 
+    borderRadius: '4px', 
+    outline: 'none', 
+    fontSize: '0.95rem',
+    minHeight: '48px' // <--- Accesibilidad táctil
+  },
+  
+  button: { 
+    padding: '10px', 
+    backgroundColor: '#4f46e5', 
+    color: '#fff', 
+    border: 'none', 
+    borderRadius: '4px', 
+    cursor: 'pointer', 
+    fontWeight: 'bold', 
+    width: '100%', 
+    marginTop: '0.5rem',
+    minHeight: '48px' // <--- Accesibilidad táctil
+  },
+  
   error: { color: 'red', fontSize: '0.85rem', marginBottom: '1rem', textAlign: 'center' }
 };
