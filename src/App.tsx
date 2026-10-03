@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import  Citas from './pages/Citas';
 
 // Páginas de ejemplo
 function Dashboard() { return <h2>Bienvenido al Panel Principal</h2>; }
@@ -21,10 +22,11 @@ function Layout() {
       <aside style={{ width: '200px', backgroundColor: '#1e293b', color: '#fff', padding: '1.5rem' }}>
         <h3 style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>Estética App</h3>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>Dashboard</Link>
-          <Link to="/inventario" style={{ color: '#fff', textDecoration: 'none' }}>Inventario</Link>
-          <Link to="/clientes" style={{ color: '#fff', textDecoration: 'none' }}>Clientes</Link>
-        </nav>
+  <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>Dashboard</Link>
+  <Link to="/citas" style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }}>Agenda</Link> {/* <-- Aquí */}
+  <Link to="/inventario" style={{ color: '#fff', textDecoration: 'none' }}>Inventario</Link>
+  <Link to="/clientes" style={{ color: '#fff', textDecoration: 'none' }}>Clientes</Link>
+</nav>
         <button 
           onClick={handleLogout} 
           style={{ marginTop: '3rem', width: '100%', padding: '8px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
