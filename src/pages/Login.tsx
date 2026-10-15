@@ -22,7 +22,17 @@ export const Login = () => {
 
       if (!response.ok) throw new Error('Credenciales incorrectas');
 
-      const data = await response.json();
+      const data: unknown = await response.json();
+      if (
+        typeof data !== 'object' ||
+        data === null ||
+        !('jwt' in data) ||
+        typeof data.jwt !== 'string' ||
+        data.jwt.trim() === ''
+      ) {
+        throw new Error('La respuesta no contiene un token válido');
+      }
+
       localStorage.setItem('token', data.jwt);
       navigate('/');
     } catch (err) {

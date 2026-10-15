@@ -16,29 +16,37 @@ export default function Finanzas() {
     const [nuevoMonto, setNuevoMonto] = useState('');
     const [nuevaFecha, setNuevaFecha] = useState(new Date().toISOString().split('T')[0]);
 
+    // Cargar gastos al montar el componente
+    useEffect(() => {
+        cargarGastos();
+    }, []);
+
     const cargarGastos = async () => {
         try {
-            const res = await axios.get('http://localhost:8080/api/v1/gastos');
+            const token = localStorage.getItem('token');
+            const res = await axios.get('http://localhost:8080/api/v1/gastos', {
+                headers: { Authorization: `Bearer ${token?.trim()}` }
+            });
             setGastos(res.data);
         } catch (error) {
             console.error("Error al cargar gastos:", error);
         }
     };
 
-    useEffect(() => {
-        cargarGastos();
-    }, []);
-
     const registrarGasto = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
+            const token = localStorage.getItem('token');
             await axios.post('http://localhost:8080/api/v1/gastos', {
                 concepto: nuevoConcepto,
                 monto: parseFloat(nuevoMonto),
                 fecha: nuevaFecha
+            }, {
+                headers: { Authorization: `Bearer ${token?.trim()}` }
             });
             setNuevoConcepto('');
             setNuevoMonto('');
+            setNuevaFecha(new Date().toISOString().split('T')[0]);
             cargarGastos();
         } catch (error) {
             console.error("Error al registrar gasto:", error);
